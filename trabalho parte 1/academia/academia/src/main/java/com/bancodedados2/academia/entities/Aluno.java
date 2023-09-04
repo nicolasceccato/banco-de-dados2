@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
@@ -16,7 +17,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "alunos")
-public class Aluno {
+public class Aluno implements Serializable {
+    private static final long serialVersionUID = 1;
 
     @Id
     @Column(name = "cpf", length = 11)
