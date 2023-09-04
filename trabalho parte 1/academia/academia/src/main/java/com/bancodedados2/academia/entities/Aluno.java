@@ -16,7 +16,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "alunos")
-public class Alunos {
+public class Aluno {
 
     @Id
     @Column(name = "cpf", length = 11)
