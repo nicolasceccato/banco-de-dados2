@@ -85,6 +85,14 @@ CREATE TABLE instrutores_treinos (
     FOREIGN KEY (matricula) REFERENCES Instrutores(matricula)
 );
 
+DROP TABLE aluno_plano;
+
+DROP TABLE pagar;
+
+ALTER TABLE alunos
+ADD COLUMN id_plano VARCHAR(11),
+ADD CONSTRAINT fk_alunos_planos FOREIGN KEY (id_plano) REFERENCES planos(id_plano);
+
 
 
 
