@@ -24,7 +24,7 @@ public class PlanoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Plano> findByCpf(@PathVariable Long id) {
+    public ResponseEntity<Plano> findById(@PathVariable Long id) {
         Plano plano = planoService.findById(id);
         return ResponseEntity.ok().body(plano);
     }

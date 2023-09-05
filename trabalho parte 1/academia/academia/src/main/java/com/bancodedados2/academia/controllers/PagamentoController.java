@@ -24,7 +24,7 @@ public class PagamentoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Pagamento> findByCpf(@PathVariable Long id) {
+    public ResponseEntity<Pagamento> findById(@PathVariable Long id) {
         Pagamento pagamento = pagamentoService.findById(id);
         return ResponseEntity.ok().body(pagamento);
     }

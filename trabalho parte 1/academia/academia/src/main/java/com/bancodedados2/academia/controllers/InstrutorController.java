@@ -24,7 +24,7 @@ public class InstrutorController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Instrutor> findByCpf(@PathVariable Long id) {
+    public ResponseEntity<Instrutor> findById(@PathVariable Long id) {
         Instrutor instrutor = instrutorService.findById(id);
         return ResponseEntity.ok().body(instrutor);
     }
