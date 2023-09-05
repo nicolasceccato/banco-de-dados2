@@ -1,9 +1,6 @@
 package com.bancodedados2.academia.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,7 +18,7 @@ public class Aluno implements Serializable {
     private static final long serialVersionUID = 1;
 
     @Id
-    @Column(name = "cpf", length = 11)
+    @Column(name = "cpf", length = 11, nullable = false)
     private String cpf;
 
     @Column(name = "nome", length = 100, nullable = false)
@@ -47,6 +44,10 @@ public class Aluno implements Serializable {
 
     @Column(name = "bairro", length = 255, nullable = false)
     private String bairro;
+
+    @ManyToOne
+    @JoinColumn(name = "id_plano")
+    private Plano plano;
 
 
 }
