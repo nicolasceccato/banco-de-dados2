@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -23,10 +25,13 @@ public class Treino {
 
     private Double valor_treino;
 
-    @ManyToOne
-    @JoinColumn(name = "id_plano")
-    private Plano plano;
+    @ManyToMany
+    @JoinTable(name = "instrutores_treinos", joinColumns = @JoinColumn(name = "id_treino"), inverseJoinColumns = @JoinColumn(name = "matricula"))
+    private List<Instrutor> instrutores = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(name = "alunos_treinos", joinColumns = @JoinColumn(name = "id_treino"), inverseJoinColumns = @JoinColumn(name = "cpf"))
+    private List<Aluno> alunos = new ArrayList<>();
 
 }
 

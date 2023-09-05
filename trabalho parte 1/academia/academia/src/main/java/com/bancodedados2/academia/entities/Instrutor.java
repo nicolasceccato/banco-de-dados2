@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -40,9 +42,8 @@ public class Instrutor {
 
     private String especialidade;
 
-    @ManyToOne
-    @JoinColumn(name = "id_plano")
-    private Plano plano;
+    @ManyToMany(mappedBy = "instrutores")
+    private List<Treino> treinos = new ArrayList<>();
 
 
 }
