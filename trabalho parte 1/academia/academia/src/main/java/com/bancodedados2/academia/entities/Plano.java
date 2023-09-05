@@ -1,5 +1,6 @@
 package com.bancodedados2.academia.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,19 +17,17 @@ import java.util.List;
 
 @Entity
 @Table(name = "planos")
-public class Plano implements Serializable {
-    private static final long serialVersionUID = 1;
+public class Plano {
 
     @Id
-    @Column(name = "id_plano", length = 11, nullable = false)
-    private String id_plano;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id_plano;
 
-    @Column(name = "nome_plano", length = 50, nullable = false)
     private String nome_plano;
 
-    @Column(name = "descricao", length = 255, nullable = false)
     private String descricao;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "plano")
     private List<Aluno> alunos = new ArrayList<>();
 
