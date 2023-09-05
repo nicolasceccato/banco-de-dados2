@@ -31,6 +31,10 @@ public class Plano {
     @OneToMany(mappedBy = "plano")
     private List<Aluno> alunos = new ArrayList<>();
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "plano")
+    private List<Pagamento> pagamentos = new ArrayList<>();
+
 
 }
 
