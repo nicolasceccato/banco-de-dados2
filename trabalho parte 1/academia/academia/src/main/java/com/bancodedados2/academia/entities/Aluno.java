@@ -44,5 +44,12 @@ public class Aluno {
     @ManyToMany(mappedBy = "alunos")
     private List<Treino> treinos = new ArrayList<>();
 
+    public Aluno(String cpf, String nome, String email, String telefone, Plano plano) {
+        this.cpf = cpf;
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+        this.plano = plano;
+    }
 
 }

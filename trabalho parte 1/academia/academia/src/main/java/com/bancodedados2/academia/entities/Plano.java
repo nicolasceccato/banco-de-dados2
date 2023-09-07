@@ -6,9 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -34,6 +32,11 @@ public class Plano {
     @JsonIgnore
     @OneToMany(mappedBy = "plano")
     private List<Pagamento> pagamentos = new ArrayList<>();
+
+    public Plano(String nome_plano, String descricao) {
+        this.nome_plano = nome_plano;
+        this.descricao = descricao;
+    }
 
 
 }
