@@ -27,9 +27,10 @@ public class Pagamento {
     @JoinColumn(name = "id_plano")
     private Plano plano;
 
-    public Pagamento(Date data_pagamento, Double valor_pagamento) {
+    public Pagamento(Date data_pagamento, Double valor_pagamento, Plano plano) {
         this.data_pagamento = data_pagamento;
         this.valor_pagamento = valor_pagamento;
+        this.plano = plano;
     }
 
 }

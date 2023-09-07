@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -24,6 +25,8 @@ public class Treino {
 
     private String descricao;
 
+    private Date dataDoTreino;
+
     private int duracao_min;
 
     @ManyToMany
@@ -34,10 +37,11 @@ public class Treino {
     @JoinTable(name = "alunos_treinos", joinColumns = @JoinColumn(name = "id_treino"), inverseJoinColumns = @JoinColumn(name = "cpf"))
     private List<Aluno> alunos = new ArrayList<>();
 
-    public Treino(String nome_treino, String descricao, int duracao_min) {
+    public Treino(String nome_treino, String descricao, int duracao_min, Date dataDoTreino) {
         this.nome_treino = nome_treino;
         this.descricao = descricao;
         this.duracao_min = duracao_min;
+        this.dataDoTreino = dataDoTreino;
     }
 }
 
