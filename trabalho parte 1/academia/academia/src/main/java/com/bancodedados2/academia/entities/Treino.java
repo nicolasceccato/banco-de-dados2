@@ -1,5 +1,6 @@
 package com.bancodedados2.academia.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,10 +30,12 @@ public class Treino {
 
     private int duracao_min;
 
+
     @ManyToMany
     @JoinTable(name = "instrutores_treinos", joinColumns = @JoinColumn(name = "id_treino"), inverseJoinColumns = @JoinColumn(name = "matricula"))
     private List<Instrutor> instrutores = new ArrayList<>();
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "alunos_treinos", joinColumns = @JoinColumn(name = "id_treino"), inverseJoinColumns = @JoinColumn(name = "cpf"))
     private List<Aluno> alunos = new ArrayList<>();

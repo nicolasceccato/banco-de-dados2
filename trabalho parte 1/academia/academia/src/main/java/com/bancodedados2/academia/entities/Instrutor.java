@@ -1,5 +1,6 @@
 package com.bancodedados2.academia.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -42,6 +43,7 @@ public class Instrutor {
 
     private String especialidade;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "instrutores")
     private List<Treino> treinos = new ArrayList<>();
 
