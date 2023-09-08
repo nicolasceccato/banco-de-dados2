@@ -7,7 +7,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 @Configuration
 @Profile("test")
@@ -33,8 +35,8 @@ public class TestConfig implements CommandLineRunner {
         Plano p4 = new Plano("Plano Familiar", "O Plano Familiar permite que até 5 membros da família compartilhem uma assinatura.");
         Plano p5 = new Plano("Plano Estudante", "Os estudantes podem aproveitar o Plano Estudante com desconto especial.");
 
+        planoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 
-        //Aluno a1 = new Aluno(, , new Date(79, 9, 25), "89201100", "Rua XV de Novembro", "123", "Centro", p1, null);
         Aluno a1 = new Aluno("12312312312", "Joaquim Brasil", "joaquim@gmail.com", "47999887766", p1);
         Aluno a2 = new Aluno("45645645645", "Maria Silva", "maria@gmail.com", "47998887777", p1);
         Aluno a3 = new Aluno("78978978978", "Carlos Santos", "carlos@gmail.com", "47997776666", p2);
@@ -47,12 +49,14 @@ public class TestConfig implements CommandLineRunner {
         Aluno a10 = new Aluno("16161616161", "Gustavo Santos", "gustavo@gmail.com", "47990009999", p4);
         Aluno a11 = new Aluno("17171717171", "Amanda Ferreira", "amanda@gmail.com", "47998887776", p5);
 
+
         Instrutor instrutor1 = new Instrutor("João Silva", "joao@gmail.com", "47998887777", "Personal Trainer", "Musculação");
         Instrutor instrutor2 = new Instrutor("Maria Santos", "maria@gmail.com", "47997776666", "Instrutor de Yoga", "Yoga e Alongamento");
         Instrutor instrutor3 = new Instrutor("Carlos Oliveira", "carlos@gmail.com", "47996665555", "Instrutor de Cardio", "Aeróbica e Corrida");
         Instrutor instrutor4 = new Instrutor("Ana Mendes", "ana@gmail.com", "47995554444", "Instrutor de Pilates", "Pilates e Flexibilidade");
         Instrutor instrutor5 = new Instrutor("Pedro Pereira", "pedro@gmail.com", "47994443333", "Instrutor de Artes Marciais", "Boxe e Jiu-Jitsu");
 
+        instrutorRepository.saveAll(Arrays.asList(instrutor1, instrutor2, instrutor3, instrutor4, instrutor5));
 
         Pagamento pagamento1 = new Pagamento(new Date(), 50.0, p1);
         Pagamento pagamento2 = new Pagamento(new Date(), 60.0, p2);
@@ -75,12 +79,29 @@ public class TestConfig implements CommandLineRunner {
         Pagamento pagamento19 = new Pagamento(new Date(), 88.0, p4);
         Pagamento pagamento20 = new Pagamento(new Date(), 98.0, p5);
 
+        pagamentoRepository.saveAll(Arrays.asList(pagamento1, pagamento2, pagamento3, pagamento4, pagamento5, pagamento6, pagamento7, pagamento8, pagamento9, pagamento10, pagamento11, pagamento12, pagamento13, pagamento14, pagamento15, pagamento16, pagamento17, pagamento18, pagamento19, pagamento20));
 
         Treino treino1 = new Treino("Treino de Musculação", "Treino focado em fortalecimento muscular", 60, new Date());
         Treino treino2 = new Treino("Treino de Cardio", "Treino de alta intensidade para queimar calorias", 45, new Date());
         Treino treino3 = new Treino("Treino de Yoga", "Treino de relaxamento e flexibilidade", 90, new Date());
         Treino treino4 = new Treino("Treino de CrossFit", "Treino funcional para ganho de resistência e força", 75, new Date());
         Treino treino5 = new Treino("Treino de Pilates", "Treino focado em flexibilidade e equilíbrio", 60, new Date());
+
+        a1.setTreinos(Arrays.asList(treino1, treino2));
+        a2.setTreinos(Arrays.asList(treino3, treino4));
+        a3.setTreinos(Arrays.asList(treino2, treino3));
+        a4.setTreinos(Arrays.asList(treino1, treino4));
+        a5.setTreinos(List.of(treino5));
+
+        alunoRepository.saveAll(Arrays.asList(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11));
+
+        treino1.setInstrutores(Arrays.asList(instrutor1, instrutor2, instrutor3, instrutor4, instrutor5));
+        treino2.setInstrutores(Arrays.asList(instrutor1, instrutor2, instrutor3, instrutor4, instrutor5));
+        treino3.setInstrutores(List.of(instrutor2));
+        treino4.setInstrutores(List.of(instrutor3));
+        treino5.setInstrutores(List.of(instrutor5));
+
+        treinoRepository.saveAll(Arrays.asList(treino1, treino2, treino3, treino4, treino5));
 
 
     }
