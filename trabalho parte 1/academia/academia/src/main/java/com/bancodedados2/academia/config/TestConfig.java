@@ -35,7 +35,7 @@ public class TestConfig implements CommandLineRunner {
         Plano p4 = new Plano("Plano Familiar", "O Plano Familiar permite que até 5 membros da família compartilhem uma assinatura.");
         Plano p5 = new Plano("Plano Estudante", "Os estudantes podem aproveitar o Plano Estudante com desconto especial.");
 
-        planoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+
 
         Aluno a1 = new Aluno("12312312312", "Joaquim Brasil", "joaquim@gmail.com", "47999887766", p1);
         Aluno a2 = new Aluno("45645645645", "Maria Silva", "maria@gmail.com", "47998887777", p1);
@@ -56,7 +56,7 @@ public class TestConfig implements CommandLineRunner {
         Instrutor instrutor4 = new Instrutor("Ana Mendes", "ana@gmail.com", "47995554444", "Instrutor de Pilates", "Pilates e Flexibilidade");
         Instrutor instrutor5 = new Instrutor("Pedro Pereira", "pedro@gmail.com", "47994443333", "Instrutor de Artes Marciais", "Boxe e Jiu-Jitsu");
 
-        instrutorRepository.saveAll(Arrays.asList(instrutor1, instrutor2, instrutor3, instrutor4, instrutor5));
+
 
         Pagamento pagamento1 = new Pagamento(new Date(), 50.0, p1);
         Pagamento pagamento2 = new Pagamento(new Date(), 60.0, p2);
@@ -79,7 +79,6 @@ public class TestConfig implements CommandLineRunner {
         Pagamento pagamento19 = new Pagamento(new Date(), 88.0, p4);
         Pagamento pagamento20 = new Pagamento(new Date(), 98.0, p5);
 
-        pagamentoRepository.saveAll(Arrays.asList(pagamento1, pagamento2, pagamento3, pagamento4, pagamento5, pagamento6, pagamento7, pagamento8, pagamento9, pagamento10, pagamento11, pagamento12, pagamento13, pagamento14, pagamento15, pagamento16, pagamento17, pagamento18, pagamento19, pagamento20));
 
         Treino treino1 = new Treino("Treino de Musculação", "Treino focado em fortalecimento muscular", 60, new Date());
         Treino treino2 = new Treino("Treino de Cardio", "Treino de alta intensidade para queimar calorias", 45, new Date());
@@ -93,15 +92,17 @@ public class TestConfig implements CommandLineRunner {
         a4.setTreinos(Arrays.asList(treino1, treino4));
         a5.setTreinos(List.of(treino5));
 
-        alunoRepository.saveAll(Arrays.asList(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11));
-
         treino1.setInstrutores(Arrays.asList(instrutor1, instrutor2, instrutor3, instrutor4, instrutor5));
         treino2.setInstrutores(Arrays.asList(instrutor1, instrutor2, instrutor3, instrutor4, instrutor5));
         treino3.setInstrutores(List.of(instrutor2));
         treino4.setInstrutores(List.of(instrutor3));
         treino5.setInstrutores(List.of(instrutor5));
 
+        planoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
+        pagamentoRepository.saveAll(Arrays.asList(pagamento1, pagamento2, pagamento3, pagamento4, pagamento5, pagamento6, pagamento7, pagamento8, pagamento9, pagamento10, pagamento11, pagamento12, pagamento13, pagamento14, pagamento15, pagamento16, pagamento17, pagamento18, pagamento19, pagamento20));
+        instrutorRepository.saveAll(Arrays.asList(instrutor1, instrutor2, instrutor3, instrutor4, instrutor5));
         treinoRepository.saveAll(Arrays.asList(treino1, treino2, treino3, treino4, treino5));
+        alunoRepository.saveAll(Arrays.asList(a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11));
 
 
     }
