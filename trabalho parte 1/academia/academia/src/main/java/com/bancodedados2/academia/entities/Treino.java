@@ -20,9 +20,9 @@ public class Treino {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_treino;
+    private Long idTreino;
 
-    private String nome_treino;
+    private String nomeDoTreino;
 
     private String descricao;
 
@@ -32,16 +32,16 @@ public class Treino {
 
 
     @ManyToMany
-    @JoinTable(name = "instrutores_treinos", joinColumns = @JoinColumn(name = "id_treino"), inverseJoinColumns = @JoinColumn(name = "matricula"))
+    @JoinTable(name = "instrutores_treinos", joinColumns = @JoinColumn(name = "idTreino"), inverseJoinColumns = @JoinColumn(name = "matricula"))
     private List<Instrutor> instrutores = new ArrayList<>();
 
     @JsonIgnore
     @ManyToMany
-    @JoinTable(name = "alunos_treinos", joinColumns = @JoinColumn(name = "id_treino"), inverseJoinColumns = @JoinColumn(name = "cpf"))
+    @JoinTable(name = "alunos_treinos", joinColumns = @JoinColumn(name = "idTreino"), inverseJoinColumns = @JoinColumn(name = "cpf"))
     private List<Aluno> alunos = new ArrayList<>();
 
-    public Treino(String nome_treino, String descricao, int duracao_min, Date dataDoTreino) {
-        this.nome_treino = nome_treino;
+    public Treino(String nomeDoTreino, String descricao, int duracao_min, Date dataDoTreino) {
+        this.nomeDoTreino = nomeDoTreino;
         this.descricao = descricao;
         this.duracao_min = duracao_min;
         this.dataDoTreino = dataDoTreino;

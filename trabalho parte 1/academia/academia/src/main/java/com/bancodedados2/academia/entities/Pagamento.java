@@ -17,19 +17,19 @@ public class Pagamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_pagamento;
+    private Long idPagamento;
 
-    private Date data_pagamento;
+    private Date dataDoPagamento;
 
-    private Double valor_pagamento;
+    private Double valorDoPagamento;
 
     @ManyToOne
     @JoinColumn(name = "id_plano")
     private Plano plano;
 
-    public Pagamento(Date data_pagamento, Double valor_pagamento, Plano plano) {
-        this.data_pagamento = data_pagamento;
-        this.valor_pagamento = valor_pagamento;
+    public Pagamento(Date dataDoPagamento, Double valorDoPagamento, Plano plano) {
+        this.dataDoPagamento = dataDoPagamento;
+        this.valorDoPagamento = valorDoPagamento;
         this.plano = plano;
     }
 

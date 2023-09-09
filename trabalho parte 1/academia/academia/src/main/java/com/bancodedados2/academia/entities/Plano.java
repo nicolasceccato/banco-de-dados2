@@ -19,9 +19,9 @@ public class Plano {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_plano;
+    private Long idPlano;
 
-    private String nome_plano;
+    private String nomeDoPlano;
 
     private String descricao;
 
@@ -33,8 +33,8 @@ public class Plano {
     @OneToMany(mappedBy = "plano")
     private List<Pagamento> pagamentos = new ArrayList<>();
 
-    public Plano(String nome_plano, String descricao) {
-        this.nome_plano = nome_plano;
+    public Plano(String nomeDoPlano, String descricao) {
+        this.nomeDoPlano = nomeDoPlano;
         this.descricao = descricao;
     }
 

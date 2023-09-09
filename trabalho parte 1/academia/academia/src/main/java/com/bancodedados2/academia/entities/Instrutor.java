@@ -29,13 +29,13 @@ public class Instrutor {
 
     private String telefone;
 
-    private Date data_nasc;
+    private Date dataDeNascimento;
 
     private String cep;
 
     private String rua;
 
-    private String numero_casa;
+    private String numeroDaCasa;
 
     private String bairro;
 
