@@ -42,12 +42,6 @@ public class TestConfig implements CommandLineRunner {
         Aluno a3 = new Aluno("78978978978", "Carlos Santos", "carlos@gmail.com", "47997776666", p2);
         Aluno a4 = new Aluno("10101010101", "Ana Oliveira", "ana@gmail.com", "47996665555", p3);
         Aluno a5 = new Aluno("11111111111", "Pedro Mendes", "pedro@gmail.com", "47995554444", p4);
-//        Aluno a6 = new Aluno("12121212121", "Isabela Pereira", "isabela@gmail.com", "47994443333", p5);
-//        Aluno a7 = new Aluno("13131313131", "Lucas Souza", "lucas@gmail.com", "47993332222", p1);
-//        Aluno a8 = new Aluno("14141414141", "Fernanda Lima", "fernanda@gmail.com", "47992221111", p2);
-//        Aluno a9 = new Aluno("15151515151", "Rafaela Alves", "rafaela@gmail.com", "47991110000", p3);
-//        Aluno a10 = new Aluno("16161616161", "Gustavo Santos", "gustavo@gmail.com", "47990009999", p4);
-//        Aluno a11 = new Aluno("17171717171", "Amanda Ferreira", "amanda@gmail.com", "47998887776", p5);
 
 
         Instrutor instrutor1 = new Instrutor("João Silva", "joao@gmail.com", "47998887777", "Personal Trainer", "Musculação");
@@ -89,11 +83,7 @@ public class TestConfig implements CommandLineRunner {
         treinos.add(treino1);
         treinos.add(treino2);
 
-//        a1.setTreinos(treinos);
-//        a2.setTreinos(Arrays.asList(treino3, treino4));
-//        a3.setTreinos(Arrays.asList(treino2, treino3));
-//        a4.setTreinos(Arrays.asList(treino1, treino4));
-//        a5.setTreinos(List.of(treino5));
+
         a1.addTreinos(Arrays.asList(treino1, treino1));
         a2.addTreinos(Arrays.asList(treino2, treino3));
         a3.addTreinos(Arrays.asList(treino2, treino3));
