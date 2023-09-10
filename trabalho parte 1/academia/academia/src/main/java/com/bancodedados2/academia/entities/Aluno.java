@@ -1,17 +1,11 @@
 package com.bancodedados2.academia.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 
 @Entity
 @Table(name = "alunos")
@@ -41,8 +35,13 @@ public class Aluno {
     @JoinColumn(name = "id_plano")
     private Plano plano;
 
+
     @ManyToMany(mappedBy = "alunos")
     private List<Treino> treinos = new ArrayList<>();
+
+    public Aluno() {
+
+    }
 
     public Aluno(String cpf, String nome, String email, String telefone, Plano plano) {
         this.cpf = cpf;
@@ -50,6 +49,96 @@ public class Aluno {
         this.email = email;
         this.telefone = telefone;
         this.plano = plano;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public Date getDataDeNascimento() {
+        return dataDeNascimento;
+    }
+
+    public void setDataDeNascimento(Date dataDeNascimento) {
+        this.dataDeNascimento = dataDeNascimento;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public String getNumeroDaCasa() {
+        return numeroDaCasa;
+    }
+
+    public void setNumeroDaCasa(String numeroDaCasa) {
+        this.numeroDaCasa = numeroDaCasa;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public Plano getPlano() {
+        return plano;
+    }
+
+    public void setPlano(Plano plano) {
+        this.plano = plano;
+    }
+
+    public List<Treino> getTreinos() {
+        return treinos;
+    }
+
+    public void addTreinos(List<Treino> novosTreinos) {
+        for (Treino treino : novosTreinos) {
+            treinos.add(treino);
+        }
     }
 
 }

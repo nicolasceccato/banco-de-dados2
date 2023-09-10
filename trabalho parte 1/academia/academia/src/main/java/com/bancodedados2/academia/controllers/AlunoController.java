@@ -3,7 +3,6 @@ package com.bancodedados2.academia.controllers;
 import com.bancodedados2.academia.entities.Aluno;
 import com.bancodedados2.academia.services.AlunoService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +13,11 @@ import java.util.List;
 @RequestMapping("/alunos")
 public class AlunoController {
 
-    @Autowired
     private AlunoService alunoService;
+
+    public AlunoController(AlunoService alunoService) {
+        this.alunoService = alunoService;
+    }
 
     @GetMapping
     public ResponseEntity<List<Aluno>> listAllAlunos() {

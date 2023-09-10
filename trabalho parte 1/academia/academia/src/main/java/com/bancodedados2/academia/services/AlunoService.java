@@ -11,8 +11,11 @@ import java.util.Optional;
 @Service
 public class AlunoService {
 
-    @Autowired
     private AlunoRepository alunoRepository;
+
+    public AlunoService(AlunoRepository alunoRepository) {
+        this.alunoRepository = alunoRepository;
+    }
 
     public List<Aluno> findAll() {
         return alunoRepository.findAll();

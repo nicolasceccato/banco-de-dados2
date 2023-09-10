@@ -2,7 +2,6 @@ package com.bancodedados2.academia.services;
 
 import com.bancodedados2.academia.entities.Treino;
 import com.bancodedados2.academia.repositories.TreinoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +10,11 @@ import java.util.Optional;
 @Service
 public class TreinoService {
 
-    @Autowired
     private TreinoRepository treinoRepository;
+
+    public TreinoService(TreinoRepository treinoRepository) {
+        this.treinoRepository = treinoRepository;
+    }
 
     public List<Treino> findAll() {
         return treinoRepository.findAll();
