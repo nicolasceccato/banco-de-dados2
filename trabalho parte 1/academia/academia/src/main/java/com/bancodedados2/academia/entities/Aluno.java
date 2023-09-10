@@ -35,8 +35,8 @@ public class Aluno {
     @JoinColumn(name = "id_plano")
     private Plano plano;
 
-
-    @ManyToMany(mappedBy = "alunos")
+    @ManyToMany
+    @JoinTable(name = "alunos_treinos", joinColumns = @JoinColumn(name = "cpf"), inverseJoinColumns = @JoinColumn(name = "idTreino"))
     private List<Treino> treinos = new ArrayList<>();
 
     public Aluno() {

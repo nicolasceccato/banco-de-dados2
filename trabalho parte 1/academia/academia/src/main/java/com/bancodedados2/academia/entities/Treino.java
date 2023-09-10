@@ -41,8 +41,7 @@ public class Treino {
     private List<Instrutor> instrutores = new ArrayList<>();
 
     @JsonIgnore
-    @ManyToMany
-    @JoinTable(name = "alunos_treinos", joinColumns = @JoinColumn(name = "idTreino"), inverseJoinColumns = @JoinColumn(name = "cpf"))
+    @ManyToMany(mappedBy = "treinos")
     private List<Aluno> alunos = new ArrayList<>();
 
 
