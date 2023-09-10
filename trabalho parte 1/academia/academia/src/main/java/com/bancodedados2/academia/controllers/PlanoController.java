@@ -14,8 +14,11 @@ import java.util.List;
 @RequestMapping("/planos")
 public class PlanoController {
 
-    @Autowired
-    private PlanoService planoService;
+    private final PlanoService planoService;
+
+    public PlanoController(PlanoService planoService) {
+        this.planoService = planoService;
+    }
 
     @GetMapping
     public ResponseEntity<List<Plano>> listAllPlanos() {
@@ -39,9 +42,9 @@ public class PlanoController {
         return ResponseEntity.status(200).body(planoService.save(plano));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Plano> deletePlano(@PathVariable Long id) {
-        planoService.deleteById(id);
+    @DeleteMapping("/{idPlano}")
+    public ResponseEntity<Plano> deletePlano(@PathVariable Long idPlano) {
+        planoService.deleteById(idPlano);
         return ResponseEntity.status(204).build();
     }
 

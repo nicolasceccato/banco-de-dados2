@@ -1,14 +1,11 @@
 package com.bancodedados2.academia.services;
 
-import com.bancodedados2.academia.entities.Aluno;
 import com.bancodedados2.academia.entities.Plano;
-import com.bancodedados2.academia.repositories.AlunoRepository;
 import com.bancodedados2.academia.repositories.PlanoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PlanoService {
@@ -30,9 +27,7 @@ public class PlanoService {
         return plano;
     }
 
-    public Optional<Plano> deleteById(Long id) {
-        Optional<Plano> plano = planoRepository.findById(id);
+    public void deleteById(Long id) {
         planoRepository.deleteById(id);
-        return plano;
     }
 }
