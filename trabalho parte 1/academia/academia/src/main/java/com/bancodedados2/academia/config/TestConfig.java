@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 @Configuration
-@Profile("dev")
+@Profile("test")
 public class TestConfig implements CommandLineRunner {
 
     @Autowired
