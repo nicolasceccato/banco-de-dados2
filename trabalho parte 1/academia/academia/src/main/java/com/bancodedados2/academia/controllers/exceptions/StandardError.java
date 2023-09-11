@@ -1,9 +1,12 @@
 package com.bancodedados2.academia.controllers.exceptions;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.Instant;
 
 public class StandardError {
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT-3")
     private Instant timestamp;
     private Integer status;
     private String error;
