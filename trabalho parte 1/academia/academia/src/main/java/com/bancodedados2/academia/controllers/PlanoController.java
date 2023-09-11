@@ -40,9 +40,10 @@ public class PlanoController {
         return ResponseEntity.created(uri).body(plano);
     }
 
-    @PutMapping
-    public ResponseEntity<Plano> editPlano(@RequestBody Plano plano) {
-        return ResponseEntity.status(200).body(planoService.save(plano));
+    @PutMapping("/{idPlano}")
+    public ResponseEntity<Plano> editPlano(@PathVariable Long idPlano, @RequestBody Plano plano) {
+        plano = planoService.update(idPlano, plano);
+        return ResponseEntity.ok().body(plano);
     }
 
     @DeleteMapping("/{idPlano}")

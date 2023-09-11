@@ -40,15 +40,16 @@ public class AlunoController {
         return ResponseEntity.created(uri).body(aluno);
     }
 
-    @PutMapping
-    public ResponseEntity<Aluno> editAluno(@RequestBody Aluno aluno) {
-        return ResponseEntity.status(200).body(alunoService.save(aluno));
+    @PutMapping("/{cpf}")
+    public ResponseEntity<Aluno> editAluno(@PathVariable String cpf, @RequestBody Aluno aluno) {
+        aluno = alunoService.update(cpf, aluno);
+        return ResponseEntity.ok().body(aluno);
     }
 
     @DeleteMapping("/{cpf}")
     public ResponseEntity<Aluno> deleteAluno(@PathVariable String cpf) {
         alunoService.deleteById(cpf);
-        return ResponseEntity.status(204).build();
+        return ResponseEntity.noContent().build();
     }
 
 }

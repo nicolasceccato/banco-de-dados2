@@ -1,6 +1,7 @@
 package com.bancodedados2.academia.services;
 
 import com.bancodedados2.academia.entities.Instrutor;
+import com.bancodedados2.academia.entities.Instrutor;
 import com.bancodedados2.academia.repositories.InstrutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,4 +34,22 @@ public class InstrutorService {
         instrutorRepository.deleteById(id);
         return instrutor;
     }
+
+    public Instrutor update(Long id, Instrutor instrutor) {
+        Instrutor entity = instrutorRepository.getReferenceById(id);
+        updateData(entity, instrutor);
+        return instrutorRepository.save(entity);
+    }
+
+    private void updateData(Instrutor entity, Instrutor instrutor) {
+        entity.setNome(instrutor.getNome());
+        entity.setEmail(instrutor.getEmail());
+        entity.setBairro(instrutor.getBairro());
+        entity.setCep(instrutor.getCep());
+        entity.setNumeroDaCasa(instrutor.getNumeroDaCasa());
+        entity.setRua(instrutor.getRua());
+        entity.setTelefone(instrutor.getTelefone());
+        entity.setCargo(instrutor.getCargo());
+    }
+    
 }

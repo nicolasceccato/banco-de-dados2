@@ -38,9 +38,10 @@ public class PagamentoController {
         return ResponseEntity.created(uri).body(pagamento);
     }
 
-    @PutMapping
-    public ResponseEntity<Pagamento> editPagamento(@RequestBody Pagamento pagamento) {
-        return ResponseEntity.status(200).body(pagamentoService.save(pagamento));
+    @PutMapping("/{idPagamento}")
+    public ResponseEntity<Pagamento> editPagamento(@PathVariable Long idPagamento, @RequestBody Pagamento pagamento) {
+        pagamento = pagamentoService.update(idPagamento, pagamento);
+        return ResponseEntity.ok().body(pagamento);
     }
 
     @DeleteMapping("/{id}")

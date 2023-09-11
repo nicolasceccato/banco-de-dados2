@@ -2,7 +2,6 @@ package com.bancodedados2.academia.services;
 
 import com.bancodedados2.academia.entities.Aluno;
 import com.bancodedados2.academia.repositories.AlunoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,5 +34,22 @@ public class AlunoService {
         Optional<Aluno> aluno = alunoRepository.findById(cpf);
         alunoRepository.deleteById(cpf);
         return aluno;
+    }
+
+    public Aluno update(String cpf, Aluno aluno) {
+        Aluno entity = alunoRepository.getReferenceById(cpf);
+        updateData(entity, aluno);
+        return alunoRepository.save(entity);
+    }
+
+    private void updateData(Aluno entity, Aluno aluno) {
+        entity.setNome(aluno.getNome());
+        entity.setEmail(aluno.getEmail());
+        entity.setBairro(aluno.getBairro());
+        entity.setPlano(aluno.getPlano());
+        entity.setCep(aluno.getCep());
+        entity.setNumeroDaCasa(aluno.getNumeroDaCasa());
+        entity.setRua(aluno.getRua());
+        entity.setTelefone(aluno.getTelefone());
     }
 }

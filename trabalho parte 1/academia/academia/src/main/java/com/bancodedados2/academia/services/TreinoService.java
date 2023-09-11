@@ -35,4 +35,15 @@ public class TreinoService {
         treinoRepository.deleteById(id);
         return treino;
     }
+
+    public Treino update(Long id, Treino treino) {
+        Treino entity = treinoRepository.getReferenceById(id);
+        updateData(entity, treino);
+        return treinoRepository.save(entity);
+    }
+
+    private void updateData(Treino entity, Treino treino) {
+        entity.setNomeDoTreino(treino.getNomeDoTreino());
+        entity.setDescricao(treino.getDescricao());
+    }
 }

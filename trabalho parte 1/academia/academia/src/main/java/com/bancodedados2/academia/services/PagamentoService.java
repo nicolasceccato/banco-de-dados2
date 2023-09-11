@@ -33,4 +33,15 @@ public class PagamentoService {
         pagamentoRepository.deleteById(id);
         return pagamento;
     }
+
+    public Pagamento update(Long id, Pagamento pagamento) {
+        Pagamento entity = pagamentoRepository.getReferenceById(id);
+        updateData(entity, pagamento);
+        return pagamentoRepository.save(entity);
+    }
+
+    private void updateData(Pagamento entity, Pagamento pagamento) {
+        entity.setDataDoPagamento(pagamento.getDataDoPagamento());
+    }
+    
 }

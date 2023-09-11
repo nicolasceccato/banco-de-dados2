@@ -38,9 +38,10 @@ public class InstrutorController {
         return ResponseEntity.created(uri).body(instrutor);
     }
 
-    @PutMapping
-    public ResponseEntity<Instrutor> editInstrutor(@RequestBody Instrutor instrutor) {
-        return ResponseEntity.status(200).body(instrutorService.save(instrutor));
+    @PutMapping("/{matricula}")
+    public ResponseEntity<Instrutor> editInstrutor(@PathVariable Long matricula, @RequestBody Instrutor instrutor) {
+        instrutor = instrutorService.update(matricula, instrutor);
+        return ResponseEntity.ok().body(instrutor);
     }
 
     @DeleteMapping("/{id}")

@@ -30,4 +30,15 @@ public class PlanoService {
     public void deleteById(Long id) {
         planoRepository.deleteById(id);
     }
+
+    public Plano update(Long id, Plano plano) {
+        Plano entity = planoRepository.getReferenceById(id);
+        updateData(entity, plano);
+        return planoRepository.save(entity);
+    }
+
+    private void updateData(Plano entity, Plano plano) {
+        entity.setNomeDoPlano(plano.getNomeDoPlano());
+        entity.setDescricao(plano.getDescricao());
+    }
 }

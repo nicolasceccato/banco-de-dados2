@@ -38,9 +38,10 @@ public class TreinoController {
         return ResponseEntity.created(uri).body(treino);
     }
 
-    @PutMapping
-    public ResponseEntity<Treino> editTreino(@RequestBody Treino treino) {
-        return ResponseEntity.status(200).body(treinoService.save(treino));
+    @PutMapping("/{idTreino}")
+    public ResponseEntity<Treino> editTreino(@PathVariable Long idTreino, @RequestBody Treino treino) {
+        treino = treinoService.update(idTreino, treino);
+        return ResponseEntity.ok().body(treino);
     }
 
     @DeleteMapping("/{id}")
