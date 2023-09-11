@@ -4,6 +4,7 @@ import com.bancodedados2.academia.entities.Pagamento;
 import com.bancodedados2.academia.repositories.PagamentoRepository;
 import com.bancodedados2.academia.services.exceptions.DatabaseException;
 import com.bancodedados2.academia.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -45,9 +46,13 @@ public class PagamentoService {
     }
 
     public Pagamento update(Long id, Pagamento pagamento) {
-        Pagamento entity = pagamentoRepository.getReferenceById(id);
-        updateData(entity, pagamento);
-        return pagamentoRepository.save(entity);
+        try {
+            Pagamento entity = pagamentoRepository.getReferenceById(id);
+            updateData(entity, pagamento);
+            return pagamentoRepository.save(entity);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException(id);
+        }
     }
 
     private void updateData(Pagamento entity, Pagamento pagamento) {

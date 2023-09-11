@@ -4,6 +4,7 @@ import com.bancodedados2.academia.entities.Instrutor;
 import com.bancodedados2.academia.repositories.InstrutorRepository;
 import com.bancodedados2.academia.services.exceptions.DatabaseException;
 import com.bancodedados2.academia.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -45,9 +46,13 @@ public class InstrutorService {
     }
 
     public Instrutor update(Long id, Instrutor instrutor) {
-        Instrutor entity = instrutorRepository.getReferenceById(id);
-        updateData(entity, instrutor);
-        return instrutorRepository.save(entity);
+        try {
+            Instrutor entity = instrutorRepository.getReferenceById(id);
+            updateData(entity, instrutor);
+            return instrutorRepository.save(entity);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException(id);
+        }
     }
 
     private void updateData(Instrutor entity, Instrutor instrutor) {

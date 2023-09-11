@@ -4,6 +4,7 @@ import com.bancodedados2.academia.entities.Plano;
 import com.bancodedados2.academia.repositories.PlanoRepository;
 import com.bancodedados2.academia.services.exceptions.DatabaseException;
 import com.bancodedados2.academia.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -45,9 +46,13 @@ public class PlanoService {
     }
 
     public Plano update(Long id, Plano plano) {
-        Plano entity = planoRepository.getReferenceById(id);
-        updateData(entity, plano);
-        return planoRepository.save(entity);
+        try {
+            Plano entity = planoRepository.getReferenceById(id);
+            updateData(entity, plano);
+            return planoRepository.save(entity);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException(id);
+        }
     }
 
     private void updateData(Plano entity, Plano plano) {

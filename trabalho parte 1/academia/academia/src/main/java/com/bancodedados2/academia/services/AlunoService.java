@@ -4,6 +4,7 @@ import com.bancodedados2.academia.entities.Aluno;
 import com.bancodedados2.academia.repositories.AlunoRepository;
 import com.bancodedados2.academia.services.exceptions.DatabaseException;
 import com.bancodedados2.academia.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
@@ -48,9 +49,13 @@ public class AlunoService {
 
 
     public Aluno update(String cpf, Aluno aluno) {
-        Aluno entity = alunoRepository.getReferenceById(cpf);
-        updateData(entity, aluno);
-        return alunoRepository.save(entity);
+        try {
+            Aluno entity = alunoRepository.getReferenceById(cpf);
+            updateData(entity, aluno);
+            return alunoRepository.save(entity);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException(cpf);
+        }
     }
 
     private void updateData(Aluno entity, Aluno aluno) {

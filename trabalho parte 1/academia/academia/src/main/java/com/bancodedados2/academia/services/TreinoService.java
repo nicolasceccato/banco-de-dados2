@@ -4,6 +4,7 @@ import com.bancodedados2.academia.entities.Treino;
 import com.bancodedados2.academia.repositories.TreinoRepository;
 import com.bancodedados2.academia.services.exceptions.DatabaseException;
 import com.bancodedados2.academia.services.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
@@ -47,9 +48,13 @@ public class TreinoService {
     }
 
     public Treino update(Long id, Treino treino) {
-        Treino entity = treinoRepository.getReferenceById(id);
-        updateData(entity, treino);
-        return treinoRepository.save(entity);
+        try {
+            Treino entity = treinoRepository.getReferenceById(id);
+            updateData(entity, treino);
+            return treinoRepository.save(entity);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException(id);
+        }
     }
 
     private void updateData(Treino entity, Treino treino) {
