@@ -2,8 +2,10 @@ package com.bancodedados2.academia.services;
 
 import com.bancodedados2.academia.entities.Plano;
 import com.bancodedados2.academia.repositories.PlanoRepository;
+import com.bancodedados2.academia.services.exceptions.DatabaseException;
 import com.bancodedados2.academia.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,7 +32,16 @@ public class PlanoService {
     }
 
     public void deleteById(Long id) {
-        planoRepository.deleteById(id);
+        try {
+            if (planoRepository.existsById(id)) {
+                planoRepository.deleteById(id);
+            } else {
+                throw new ResourceNotFoundException(id);
+            }
+
+        } catch (DataIntegrityViolationException e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     public Plano update(Long id, Plano plano) {

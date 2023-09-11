@@ -2,7 +2,9 @@ package com.bancodedados2.academia.services;
 
 import com.bancodedados2.academia.entities.Treino;
 import com.bancodedados2.academia.repositories.TreinoRepository;
+import com.bancodedados2.academia.services.exceptions.DatabaseException;
 import com.bancodedados2.academia.services.exceptions.ResourceNotFoundException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,10 +33,17 @@ public class TreinoService {
         return treino.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
-    public Optional<Treino> deleteById(Long id) {
-        Optional<Treino> treino = treinoRepository.findById(id);
-        treinoRepository.deleteById(id);
-        return treino;
+    public void deleteById(Long id) {
+        try {
+            if (treinoRepository.existsById(id)) {
+                treinoRepository.deleteById(id);
+            } else {
+                throw new ResourceNotFoundException(id);
+            }
+
+        } catch (DataIntegrityViolationException e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     public Treino update(Long id, Treino treino) {

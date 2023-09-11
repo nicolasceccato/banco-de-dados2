@@ -2,8 +2,10 @@ package com.bancodedados2.academia.services;
 
 import com.bancodedados2.academia.entities.Instrutor;
 import com.bancodedados2.academia.repositories.InstrutorRepository;
+import com.bancodedados2.academia.services.exceptions.DatabaseException;
 import com.bancodedados2.academia.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,10 +31,17 @@ public class InstrutorService {
         return instrutor.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
-    public Optional<Instrutor> deleteById(Long id) {
-        Optional<Instrutor> instrutor = instrutorRepository.findById(id);
-        instrutorRepository.deleteById(id);
-        return instrutor;
+    public void deleteById(Long id) {
+        try {
+            if (instrutorRepository.existsById(id)) {
+                instrutorRepository.deleteById(id);
+            } else {
+                throw new ResourceNotFoundException(id);
+            }
+
+        } catch (DataIntegrityViolationException e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     public Instrutor update(Long id, Instrutor instrutor) {

@@ -2,7 +2,9 @@ package com.bancodedados2.academia.services;
 
 import com.bancodedados2.academia.entities.Aluno;
 import com.bancodedados2.academia.repositories.AlunoRepository;
+import com.bancodedados2.academia.services.exceptions.DatabaseException;
 import com.bancodedados2.academia.services.exceptions.ResourceNotFoundException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,11 +33,19 @@ public class AlunoService {
         return aluno.orElseThrow(() -> new ResourceNotFoundException(cpf));
     }
 
-    public Optional<Aluno> deleteById(String cpf) {
-        Optional<Aluno> aluno = alunoRepository.findById(cpf);
-        alunoRepository.deleteById(cpf);
-        return aluno;
+    public void deleteById(String cpf) {
+        try {
+            if (alunoRepository.existsById(cpf)) {
+                alunoRepository.deleteById(cpf);
+            } else {
+                throw new ResourceNotFoundException(cpf);
+            }
+
+        } catch (DataIntegrityViolationException e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
+
 
     public Aluno update(String cpf, Aluno aluno) {
         Aluno entity = alunoRepository.getReferenceById(cpf);

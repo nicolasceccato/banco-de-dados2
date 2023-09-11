@@ -2,8 +2,10 @@ package com.bancodedados2.academia.services;
 
 import com.bancodedados2.academia.entities.Pagamento;
 import com.bancodedados2.academia.repositories.PagamentoRepository;
+import com.bancodedados2.academia.services.exceptions.DatabaseException;
 import com.bancodedados2.academia.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,10 +31,17 @@ public class PagamentoService {
         return pagamento.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
-    public Optional<Pagamento> deleteById(Long id) {
-        Optional<Pagamento> pagamento = pagamentoRepository.findById(id);
-        pagamentoRepository.deleteById(id);
-        return pagamento;
+    public void deleteById(Long id) {
+        try {
+            if (pagamentoRepository.existsById(id)) {
+                pagamentoRepository.deleteById(id);
+            } else {
+                throw new ResourceNotFoundException(id);
+            }
+
+        } catch (DataIntegrityViolationException e) {
+            throw new DatabaseException(e.getMessage());
+        }
     }
 
     public Pagamento update(Long id, Pagamento pagamento) {
