@@ -2,10 +2,12 @@ package com.bancodedados2.academia.services;
 
 import com.bancodedados2.academia.entities.Plano;
 import com.bancodedados2.academia.repositories.PlanoRepository;
+import com.bancodedados2.academia.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PlanoService {
@@ -23,8 +25,8 @@ public class PlanoService {
     }
 
     public Plano findById(Long id) {
-        Plano plano = planoRepository.findById(id).get();
-        return plano;
+        Optional<Plano> plano = planoRepository.findById(id);
+        return plano.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
     public void deleteById(Long id) {

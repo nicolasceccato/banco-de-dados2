@@ -1,8 +1,8 @@
 package com.bancodedados2.academia.services;
 
 import com.bancodedados2.academia.entities.Instrutor;
-import com.bancodedados2.academia.entities.Instrutor;
 import com.bancodedados2.academia.repositories.InstrutorRepository;
+import com.bancodedados2.academia.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +25,8 @@ public class InstrutorService {
     }
 
     public Instrutor findById(Long id) {
-        Instrutor instrutor = instrutorRepository.findById(id).get();
-        return instrutor;
+        Optional<Instrutor> instrutor = instrutorRepository.findById(id);
+        return instrutor.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
     public Optional<Instrutor> deleteById(Long id) {
@@ -51,5 +51,5 @@ public class InstrutorService {
         entity.setTelefone(instrutor.getTelefone());
         entity.setCargo(instrutor.getCargo());
     }
-    
+
 }

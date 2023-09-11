@@ -2,6 +2,7 @@ package com.bancodedados2.academia.services;
 
 import com.bancodedados2.academia.entities.Treino;
 import com.bancodedados2.academia.repositories.TreinoRepository;
+import com.bancodedados2.academia.services.exceptions.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,8 +27,8 @@ public class TreinoService {
     }
 
     public Treino findById(Long id) {
-        Treino treino = treinoRepository.findById(id).get();
-        return treino;
+        Optional<Treino> treino = treinoRepository.findById(id);
+        return treino.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
     public Optional<Treino> deleteById(Long id) {

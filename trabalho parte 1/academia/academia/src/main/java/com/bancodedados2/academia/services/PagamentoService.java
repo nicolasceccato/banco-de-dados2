@@ -2,6 +2,7 @@ package com.bancodedados2.academia.services;
 
 import com.bancodedados2.academia.entities.Pagamento;
 import com.bancodedados2.academia.repositories.PagamentoRepository;
+import com.bancodedados2.academia.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +25,8 @@ public class PagamentoService {
     }
 
     public Pagamento findById(Long id) {
-        Pagamento pagamento = pagamentoRepository.findById(id).get();
-        return pagamento;
+        Optional<Pagamento> pagamento = pagamentoRepository.findById(id);
+        return pagamento.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
     public Optional<Pagamento> deleteById(Long id) {
@@ -43,5 +44,5 @@ public class PagamentoService {
     private void updateData(Pagamento entity, Pagamento pagamento) {
         entity.setDataDoPagamento(pagamento.getDataDoPagamento());
     }
-    
+
 }

@@ -2,6 +2,7 @@ package com.bancodedados2.academia.services;
 
 import com.bancodedados2.academia.entities.Aluno;
 import com.bancodedados2.academia.repositories.AlunoRepository;
+import com.bancodedados2.academia.services.exceptions.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,8 +27,8 @@ public class AlunoService {
     }
 
     public Aluno findById(String cpf) {
-        Aluno aluno = alunoRepository.findById(cpf).get();
-        return aluno;
+        Optional<Aluno> aluno = alunoRepository.findById(cpf);
+        return aluno.orElseThrow(() -> new ResourceNotFoundException(cpf));
     }
 
     public Optional<Aluno> deleteById(String cpf) {
