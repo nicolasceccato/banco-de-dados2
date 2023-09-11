@@ -6,7 +6,9 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -31,7 +33,9 @@ public class InstrutorController {
 
     @PostMapping
     public ResponseEntity<Instrutor> createInstrutor(@Valid @RequestBody Instrutor instrutor) {
-        return ResponseEntity.status(201).body(instrutorService.save(instrutor));
+        instrutor = instrutorService.save(instrutor);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{matricula}").buildAndExpand(instrutor.getMatricula()).toUri();
+        return ResponseEntity.created(uri).body(instrutor);
     }
 
     @PutMapping

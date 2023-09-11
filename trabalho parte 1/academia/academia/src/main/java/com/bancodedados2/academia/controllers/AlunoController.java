@@ -5,7 +5,9 @@ import com.bancodedados2.academia.services.AlunoService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -33,7 +35,9 @@ public class AlunoController {
 
     @PostMapping
     public ResponseEntity<Aluno> createAluno(@Valid @RequestBody Aluno aluno) {
-        return ResponseEntity.status(201).body(alunoService.save(aluno));
+        aluno = alunoService.save(aluno);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{cpf}").buildAndExpand(aluno.getCpf()).toUri();
+        return ResponseEntity.created(uri).body(aluno);
     }
 
     @PutMapping

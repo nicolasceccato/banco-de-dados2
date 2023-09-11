@@ -6,7 +6,9 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -31,7 +33,9 @@ public class TreinoController {
 
     @PostMapping
     public ResponseEntity<Treino> createTreino(@Valid @RequestBody Treino treino) {
-        return ResponseEntity.status(201).body(treinoService.save(treino));
+        treino = treinoService.save(treino);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{idTreino}").buildAndExpand(treino.getIdTreino()).toUri();
+        return ResponseEntity.created(uri).body(treino);
     }
 
     @PutMapping

@@ -3,10 +3,11 @@ package com.bancodedados2.academia.controllers;
 import com.bancodedados2.academia.entities.Plano;
 import com.bancodedados2.academia.services.PlanoService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -34,7 +35,9 @@ public class PlanoController {
 
     @PostMapping
     public ResponseEntity<Plano> createPlano(@Valid @RequestBody Plano plano) {
-        return ResponseEntity.status(201).body(planoService.save(plano));
+        plano = planoService.save(plano);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{idPlano}").buildAndExpand(plano.getIdPlano()).toUri();
+        return ResponseEntity.created(uri).body(plano);
     }
 
     @PutMapping

@@ -6,7 +6,9 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -31,7 +33,9 @@ public class PagamentoController {
 
     @PostMapping
     public ResponseEntity<Pagamento> createPagamento(@Valid @RequestBody Pagamento pagamento) {
-        return ResponseEntity.status(201).body(pagamentoService.save(pagamento));
+        pagamento = pagamentoService.save(pagamento);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{idPagamento}").buildAndExpand(pagamento.getIdPagamento()).toUri();
+        return ResponseEntity.created(uri).body(pagamento);
     }
 
     @PutMapping
