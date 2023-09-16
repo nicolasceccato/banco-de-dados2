@@ -2,6 +2,36 @@ Um BD referente a este esquema está disponível no arquivo ‘evento_backup’.
 
 Importante: Não use valores contidos nos registros deste BD como argumentos de suas expressões, exceto quando expresso no enunciado da questão. Suas expressões deverão funcionar mesmo se os dados contidos no banco sofrerem alterações, inclusões ou exclusões de registros.
 
+Considere o seguinte esquema de BD relacional para o domínio de um evento científico. Este evento
+tem edições anuais, cada uma com artigos sendo publicados por diversos autores. As relações do BD
+são descritas a seguir:
+edicoes (#edicaoid, ano, cidade, uf, qtdparticipantes)
+artigos (#artigoid, titulo, [&tipoid], &edicaoid)
+tipos (#tipoid, nome)
+autores (#autorid, nome, gênero)
+autoresartigo (#id, &autorid, &artigoid)
+Observações sobre este esquema relacional:
+- A chave primária de uma relação é definida pelo conjunto de atributos pré-fixados com #;
+- Atributos pré-fixados com & correspondem a chaves estrangeiras. Toda chave estrangeira se refere a um valor de chave
+primária;
+- Atributos opcionais estão entre [];
+- Relação edicoes: registra as edições anuais do evento, com id, ano, cidade e estado que ocorrem. Além disto, o campo
+qtdparticipantes registra o total de pessoas inscritas para assistir ao evento;
+- Relação artigos: registra os artigos publicados no evento. Cada artigo possui um id e um título. Os artigos são
+relacionados à edição em que foram publicados através do campo edicaoid, que é uma chave estrangeira para a relação
+edicoes. Além disto, opcionalmente pode ser definido um tipo para o artigo através do campo tipoid que é uma chave
+estrangeira para a relação tipos.
+- Relação tipos: registra os tipos dos artigos, contendo os campos id e nome. Os nomes dos tipos podem ser:
+“Graduação”, “Pós-Graduação”, “Pesquisa”, e “Aplicações/Experiências”;
+- Relação autores: registra os dados dos autores de artigos. Cada autor possui um id, nome e genero que pode ser ‘f’ ou
+‘m’;
+- Relação autoresartigo: esta relação associa os artigos aos seus vários autores. Como um autor pode ter vários artigos,
+e um artigo vários autores, esta relação é uma tabela associativa cujas tuplas representam a relação de um autor a um
+de seus artigos. Além do id, esta relação apresenta os campos autorid e artigoid que são chaves estrangeiras para as
+relações autores e artigos, respectivamente.
+Um BD referente a este esquema está disponível no arquivo ‘evento_backup’. Use o conteúdo deste arquivo para criar um BD no
+PostgreSQL e testar suas expressões que respondem às questões desta lista de exercícios.
+
 --
 -- PostgreSQL database dump
 --
