@@ -49,5 +49,12 @@ public class TreinoController {
         treinoService.deleteById(id);
         return ResponseEntity.status(204).build();
     }
-
+    @GetMapping("/alunos/{idTreino}")
+    public ResponseEntity<Long> alunosPorTreino(@PathVariable Long idTreino){
+        return ResponseEntity.ok(treinoService.contagemDeAlunosPorTreino(idTreino));
+    }
+    @GetMapping("/instrutores/{idTreino}")
+    public ResponseEntity<Long> instrutoresPorTreino(@PathVariable Long idTreino){
+        return ResponseEntity.ok(treinoService.contagemDeInstrutoresPorTreino(idTreino));
+    }
 }

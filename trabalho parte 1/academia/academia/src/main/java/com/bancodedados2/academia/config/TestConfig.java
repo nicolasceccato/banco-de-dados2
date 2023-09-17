@@ -84,7 +84,7 @@ public class TestConfig implements CommandLineRunner {
         treinos.add(treino2);
 
 
-        a1.addTreinos(Arrays.asList(treino1, treino1));
+        a1.addTreinos(Arrays.asList(treino1, treino2));
         a2.addTreinos(Arrays.asList(treino2, treino3));
         a3.addTreinos(Arrays.asList(treino2, treino3));
         a4.addTreinos(Arrays.asList(treino1, treino4));

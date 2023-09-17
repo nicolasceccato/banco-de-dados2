@@ -61,4 +61,18 @@ public class TreinoService {
         entity.setNomeDoTreino(treino.getNomeDoTreino());
         entity.setDescricao(treino.getDescricao());
     }
+
+    public Long contagemDeAlunosPorTreino(Long idTreino) {
+        Treino treino = treinoRepository.findById(idTreino)
+                .orElseThrow(() -> new EntityNotFoundException("Treino não encontrado para o ID: " + idTreino));
+
+        return treinoRepository.countAlunosByTreino(treino);
+    }
+    public Long contagemDeInstrutoresPorTreino(Long idTreino) {
+        Treino treino = treinoRepository.findById(idTreino)
+                .orElseThrow(() -> new EntityNotFoundException("Treino não encontrado para o ID: " + idTreino));
+
+        return treinoRepository.countInstrutoresByTreino(treino);
+    }
+
 }
