@@ -9,11 +9,7 @@ import java.util.Date;
 
 public interface TreinoRepository extends JpaRepository<Treino, Long> {
 
-    //Long countAlunosByTreinos();
-
-    //Long countByAlunos();
-//    Date countByAlunosIn
-
+    //jpql
     @Query("SELECT COUNT(a) FROM Treino t JOIN t.alunos a WHERE t = :treino")
     Long countAlunosByTreino(@Param("treino") Treino treino);
 

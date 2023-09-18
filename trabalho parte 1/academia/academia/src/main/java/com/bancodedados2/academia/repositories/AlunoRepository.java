@@ -9,11 +9,4 @@ import java.util.Date;
 
 public interface AlunoRepository extends JpaRepository<Aluno, String> {
 
-
-    //jpql
-//    @Query("SELECT COUNT(a) FROM Aluno a JOIN a.treinos t WHERE t.idTreino = :treinoId AND t.dataDoTreino = :dataTreino")
-//    Long countAlunosByTreinosAndData(@Param("treinoId") Long treinoId, @Param("dataTreino") Date dataTreino);
-
-//    Long countAlunosByTreinos(Long idTreino);
-
 }
