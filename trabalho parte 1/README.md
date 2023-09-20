@@ -16,3 +16,8 @@ Na Fase 1 as equipes deverão entregar:
 1) Um documento de texto contendo: (a) uma seção com uma introdução explicativa do domínio de informação escolhido, (b) o esquema conceitual e (c) o esquema lógico na forma de um dicionário de dados
 
 2) Um repositório ou diretório na nuvem contendo: (a) arquivos de código-fonte da aplicação desenvolvida, (b) um arquivo de backup do banco de dados e (c) um arquivo de texto com instruções para a compilação e execução da aplicação. Forneça o link do repositório no documento de texto solicitado no item 1.
+
+## Tecnologias Utilizadas - Backend
+- Java
+- Spring Boot
+- MySQL (banco de dados relacional)
