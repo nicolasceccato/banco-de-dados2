@@ -1,7 +1,6 @@
 package com.bancodedados2.academia.services;
 
 import com.bancodedados2.academia.entities.Aluno;
-import com.bancodedados2.academia.entities.Treino;
 import com.bancodedados2.academia.repositories.AlunoRepository;
 import com.bancodedados2.academia.services.exceptions.DatabaseException;
 import com.bancodedados2.academia.services.exceptions.ResourceNotFoundException;
