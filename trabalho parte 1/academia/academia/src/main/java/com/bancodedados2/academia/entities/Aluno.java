@@ -1,5 +1,6 @@
 package com.bancodedados2.academia.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -38,6 +39,10 @@ public class Aluno {
     @ManyToMany
     @JoinTable(name = "alunos_treinos", joinColumns = @JoinColumn(name = "cpf"), inverseJoinColumns = @JoinColumn(name = "idTreino"))
     private List<Treino> treinos = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
+    private List<Pagamento> pagamentos = new ArrayList<>();
 
     public Aluno() {
 
@@ -139,6 +144,10 @@ public class Aluno {
         for (Treino treino : novosTreinos) {
             treinos.add(treino);
         }
+    }
+
+    public List<Pagamento> getPagamentos() {
+        return pagamentos;
     }
 
 }

@@ -51,26 +51,22 @@ public class TestConfig implements CommandLineRunner {
         Instrutor instrutor5 = new Instrutor("Pedro Pereira", "pedro@gmail.com", "47994443333", "Instrutor de Artes Marciais", "Boxe e Jiu-Jitsu");
 
 
-        Pagamento pagamento1 = new Pagamento(new Date(), 50.0, p1);
-        Pagamento pagamento2 = new Pagamento(new Date(), 60.0, p2);
-        Pagamento pagamento3 = new Pagamento(new Date(), 70.0, p3);
-        Pagamento pagamento4 = new Pagamento(new Date(), 80.0, p4);
-        Pagamento pagamento5 = new Pagamento(new Date(), 90.0, p5);
-        Pagamento pagamento6 = new Pagamento(new Date(), 55.0, p1);
-        Pagamento pagamento7 = new Pagamento(new Date(), 65.0, p2);
-        Pagamento pagamento8 = new Pagamento(new Date(), 75.0, p3);
-        Pagamento pagamento9 = new Pagamento(new Date(), 85.0, p4);
-        Pagamento pagamento10 = new Pagamento(new Date(), 95.0, p5);
-        Pagamento pagamento11 = new Pagamento(new Date(), 52.0, p1);
-        Pagamento pagamento12 = new Pagamento(new Date(), 62.0, p2);
-        Pagamento pagamento13 = new Pagamento(new Date(), 72.0, p3);
-        Pagamento pagamento14 = new Pagamento(new Date(), 82.0, p4);
-        Pagamento pagamento15 = new Pagamento(new Date(), 92.0, p5);
-        Pagamento pagamento16 = new Pagamento(new Date(), 58.0, p1);
-        Pagamento pagamento17 = new Pagamento(new Date(), 68.0, p2);
-        Pagamento pagamento18 = new Pagamento(new Date(), 78.0, p3);
-        Pagamento pagamento19 = new Pagamento(new Date(), 88.0, p4);
-        Pagamento pagamento20 = new Pagamento(new Date(), 98.0, p5);
+        Pagamento pagamento1 = new Pagamento(new Date(), 50.0, p1, a1);
+        Pagamento pagamento2 = new Pagamento(new Date(), 60.0, p2, a3);
+        Pagamento pagamento3 = new Pagamento(new Date(), 70.0, p3, a4);
+        Pagamento pagamento4 = new Pagamento(new Date(), 80.0, p4, a5);
+        Pagamento pagamento6 = new Pagamento(new Date(), 55.0, p1, a2);
+        Pagamento pagamento7 = new Pagamento(new Date(), 65.0, p2, a3);
+        Pagamento pagamento8 = new Pagamento(new Date(), 75.0, p3, a4);
+        Pagamento pagamento9 = new Pagamento(new Date(), 85.0, p4, a5);
+        Pagamento pagamento11 = new Pagamento(new Date(), 52.0, p1, a1);
+        Pagamento pagamento12 = new Pagamento(new Date(), 62.0, p2, a3);
+        Pagamento pagamento13 = new Pagamento(new Date(), 72.0, p3, a4);
+        Pagamento pagamento14 = new Pagamento(new Date(), 82.0, p4, a5);
+        Pagamento pagamento16 = new Pagamento(new Date(), 58.0, p1, a2);
+        Pagamento pagamento17 = new Pagamento(new Date(), 68.0, p2, a3);
+        Pagamento pagamento18 = new Pagamento(new Date(), 78.0, p3, a4);
+        Pagamento pagamento19 = new Pagamento(new Date(), 88.0, p4, a5);
 
 
         Treino treino1 = new Treino("Treino de Musculação", "Treino focado em fortalecimento muscular", 60, new Date());
@@ -97,11 +93,12 @@ public class TestConfig implements CommandLineRunner {
         treino5.addInstrutores(List.of(instrutor5));
 
         planoRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
-        pagamentoRepository.saveAll(Arrays.asList(pagamento1, pagamento2, pagamento3, pagamento4, pagamento5, pagamento6, pagamento7, pagamento8, pagamento9, pagamento10, pagamento11, pagamento12, pagamento13, pagamento14, pagamento15, pagamento16, pagamento17, pagamento18, pagamento19, pagamento20));
         instrutorRepository.saveAll(Arrays.asList(instrutor1, instrutor2, instrutor3, instrutor4, instrutor5));
         treinoRepository.saveAll(Arrays.asList(treino1, treino2, treino3, treino4, treino5));
         treinoRepository.saveAll(treinos);
         alunoRepository.saveAll(Arrays.asList(a1, a2, a3, a4, a5));
+        pagamentoRepository.saveAll(Arrays.asList(pagamento1, pagamento2, pagamento3, pagamento4, pagamento6, pagamento7, pagamento8, pagamento9,  pagamento11, pagamento12, pagamento13, pagamento14, pagamento16, pagamento17, pagamento18, pagamento19));
+
 
 
     }

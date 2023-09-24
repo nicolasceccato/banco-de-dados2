@@ -18,16 +18,21 @@ public class Pagamento {
     private Double valorDoPagamento;
 
     @ManyToOne
+    @JoinColumn(name = "cpf")
+    private Aluno aluno;
+
+    @ManyToOne
     @JoinColumn(name = "id_plano")
     private Plano plano;
 
     public Pagamento(){
 
     }
-    public Pagamento(Date dataDoPagamento, Double valorDoPagamento, Plano plano) {
+    public Pagamento(Date dataDoPagamento, Double valorDoPagamento, Plano plano, Aluno aluno) {
         this.dataDoPagamento = dataDoPagamento;
         this.valorDoPagamento = valorDoPagamento;
         this.plano = plano;
+        this.aluno = aluno;
     }
 
     public Long getIdPagamento() {
@@ -60,6 +65,14 @@ public class Pagamento {
 
     public void setPlano(Plano plano) {
         this.plano = plano;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
     }
 }
 

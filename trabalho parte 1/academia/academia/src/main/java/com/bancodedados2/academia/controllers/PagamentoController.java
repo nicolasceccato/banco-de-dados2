@@ -50,4 +50,10 @@ public class PagamentoController {
         return ResponseEntity.status(204).build();
     }
 
+    @GetMapping("/aluno/{cpf}")
+    public ResponseEntity<List<Pagamento>> obterPagamentosPorAluno(@PathVariable String cpf) {
+        List<Pagamento> pagamentos = pagamentoService.obterPagamentosPorAluno(cpf);
+        return ResponseEntity.ok(pagamentos);
+    }
+
 }

@@ -59,4 +59,7 @@ public class PagamentoService {
         entity.setDataDoPagamento(pagamento.getDataDoPagamento());
     }
 
+    public List<Pagamento> obterPagamentosPorAluno(String cpf) {
+        return pagamentoRepository.findPagamentosPorAluno(cpf);
+    }
 }

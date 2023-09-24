@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface PagamentoRepository extends JpaRepository<Pagamento, Long> {
-    @Query("SELECT p FROM Pagamento p WHERE p.plano.aluno.cpf = :cpfAluno")
-    List<Pagamento> findPagamentosByAlunoCpf(@Param("cpfAluno") String cpfAluno);
+    @Query("SELECT p FROM Pagamento p WHERE p.aluno.cpf = :cpf")
+    List<Pagamento> findPagamentosPorAluno(@Param("cpf") String cpf);
+
 }
