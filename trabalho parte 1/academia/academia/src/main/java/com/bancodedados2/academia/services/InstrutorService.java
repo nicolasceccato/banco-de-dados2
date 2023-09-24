@@ -65,5 +65,8 @@ public class InstrutorService {
         entity.setTelefone(instrutor.getTelefone());
         entity.setCargo(instrutor.getCargo());
     }
+    public List<Object[]> getInstrutoresAndNumAlunos() {
+        return instrutorRepository.findInstrutoresAndNumAlunos();
+    }
 
 }

@@ -50,4 +50,11 @@ public class InstrutorController {
         return ResponseEntity.status(204).build();
     }
 
+    @GetMapping("/instrutores-alunos")
+    public ResponseEntity<List<Object[]>> getInstrutoresAndNumAlunos() {
+        List<Object[]> instrutores = instrutorService.getInstrutoresAndNumAlunos();
+        return ResponseEntity.ok().body(instrutores);
+    }
+
+
 }

@@ -51,9 +51,11 @@ public class AlunoController {
         alunoService.deleteById(cpf);
         return ResponseEntity.noContent().build();
     }
-//    @GetMapping("/contagem/{idTreino}")
-//    public ResponseEntity<Long> alunosPorTreino(@PathVariable Long idTreino){
-//        return ResponseEntity.ok(alunoService.contagemDeAlunosEmUmTreino(idTreino));
-//    }
+
+    @GetMapping("/plano/{idPlano}")
+    public ResponseEntity<List<Aluno>> findAlunosByPlano(@PathVariable Long idPlano) {
+        List<Aluno> alunos = alunoService.findAlunosByPlanoId(idPlano);
+        return ResponseEntity.ok().body(alunos);
+    }
 
 }

@@ -69,11 +69,7 @@ public class AlunoService {
         entity.setTelefone(aluno.getTelefone());
     }
 
-//    public Long contagemDeAlunosEmUmTreino(Long idTreino) {
-//
-//        Treino treino = alunoRepository.
-//
-//        return alunoRepository.countAlunosByTreinos(idTreino);
-//    }
-
+    public List<Aluno> findAlunosByPlanoId(Long idPlano) {
+        return alunoRepository.findAlunosByPlanoId(idPlano);
+    }
 }
