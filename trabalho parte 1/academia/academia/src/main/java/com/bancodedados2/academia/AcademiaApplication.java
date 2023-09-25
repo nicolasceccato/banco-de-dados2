@@ -1,5 +1,6 @@
 package com.bancodedados2.academia;
 
+import com.bancodedados2.academia.ui.Menu;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,6 +9,8 @@ public class AcademiaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AcademiaApplication.class, args);
+		Menu.exibirMenu();
+
 	}
 
 }
