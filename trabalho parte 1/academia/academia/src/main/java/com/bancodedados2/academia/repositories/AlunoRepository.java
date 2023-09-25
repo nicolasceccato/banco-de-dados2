@@ -1,13 +1,14 @@
 package com.bancodedados2.academia.repositories;
 
 import com.bancodedados2.academia.entities.Aluno;
-import com.bancodedados2.academia.entities.Plano;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface AlunoRepository extends JpaRepository<Aluno, String> {
 
     //Relatório 1: Descreva os alunos matriculados em um determinado plano

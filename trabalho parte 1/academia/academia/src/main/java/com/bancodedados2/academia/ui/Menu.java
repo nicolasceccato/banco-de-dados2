@@ -1,17 +1,15 @@
 package com.bancodedados2.academia.ui;
 
-import com.bancodedados2.academia.entities.Aluno;
-import com.bancodedados2.academia.services.AlunoService;
+import com.bancodedados2.academia.controllers.AlunoController;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
 
-    private static AlunoService alunoService;
+    private static MenuAluno menuAluno = new MenuAluno();
 
-    public Menu(AlunoService alunoService) {
-        this.alunoService = alunoService;
+    public Menu(AlunoController alunoController) {
+        alunoController = alunoController;
     }
 
 
@@ -32,7 +30,7 @@ public class Menu {
 
             switch (escolha) {
                 case 1:
-                    menuAluno();
+                    menuAluno.menuAluno();
                     break;
                 case 2:
                     menuInstrutor();
@@ -55,106 +53,6 @@ public class Menu {
         } while (escolha != 6);
     }
 
-    private static void menuAluno() {
-        Scanner scanner = new Scanner(System.in);
-
-
-        int escolha;
-        do {
-            System.out.println("=== MENU DE ALUNOS ===");
-            System.out.println("1. Listar Alunos");
-            System.out.println("2. Cadastrar Aluno");
-            System.out.println("3. Visualizar Aluno");
-            System.out.println("4. Atualizar Aluno");
-            System.out.println("5. Excluir Aluno");
-            System.out.println("6. Voltar ao menu principal");
-            System.out.print("Escolha uma opção: ");
-            escolha = scanner.nextInt();
-
-            switch (escolha) {
-                case 1:
-                    listarAlunos();
-                    break;
-                case 2:
-                    cadastrarAluno();
-                    break;
-                case 3:
-                    visualizarAluno();
-                    break;
-                case 4:
-                    atualizarAluno();
-                    break;
-                case 5:
-                    excluirAluno();
-                    break;
-                case 6:
-                    System.out.println("Voltando ao menu principal.");
-                    break;
-                default:
-                    System.out.println("Opção inválida. Tente novamente.");
-            }
-        } while (escolha != 6);
-    }
-
-    private static void listarAlunos() {
-        List<Aluno> alunos = alunoService.findAll();
-        for (Aluno aluno : alunos) {
-            System.out.println(aluno);
-        }
-    }
-
-    private static void cadastrarAluno() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Digite o CPF do aluno: ");
-        String cpf = scanner.nextLine();
-        System.out.print("Digite o nome do aluno: ");
-        String nome = scanner.nextLine();
-        // Obtenha outros dados do aluno conforme necessário
-        Aluno aluno = new Aluno(cpf, nome, ...);
-        alunoService.save(aluno);
-        System.out.println("Aluno cadastrado com sucesso!");
-    }
-
-    private static void visualizarAluno() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Digite o CPF do aluno: ");
-        String cpf = scanner.nextLine();
-        Aluno aluno = alunoService.findById(cpf);
-        System.out.println(aluno);
-
-    }
-
-    private static void atualizarAluno() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Digite o CPF do aluno a ser atualizado: ");
-        String cpf = scanner.nextLine();
-
-
-        Aluno aluno = alunoService.findById(cpf);
-
-        System.out.print("Digite o novo nome do aluno: ");
-        String novoNome = scanner.nextLine();
-        aluno.setNome(novoNome);
-
-        // Atualize outros dados do aluno conforme necessário
-
-        alunoService.update(cpf, aluno);
-        System.out.println("Aluno atualizado com sucesso!");
-
-    }
-
-    private static void excluirAluno() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Digite o CPF do aluno a ser excluído: ");
-        String cpf = scanner.nextLine();
-
-
-            alunoService.deleteById(cpf);
-            System.out.println("Aluno excluído com sucesso!");
-
-    }
-
-}
 
     private static void menuInstrutor() {
         // Implemente aqui o menu para gerenciar instrutores (CRUD)
