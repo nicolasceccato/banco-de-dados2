@@ -1,5 +1,3 @@
-const baseURL = 'http://localhost:8080';
-
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnAlunos').addEventListener('click', listarAlunos);
 });
