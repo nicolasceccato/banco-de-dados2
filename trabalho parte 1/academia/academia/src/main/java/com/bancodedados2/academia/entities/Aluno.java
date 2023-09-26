@@ -55,6 +55,12 @@ public class Aluno {
         this.telefone = telefone;
         this.plano = plano;
     }
+    public Aluno(String cpf, String nome, String email, String telefone) {
+        this.cpf = cpf;
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+    }
 
     public String getCpf() {
         return cpf;

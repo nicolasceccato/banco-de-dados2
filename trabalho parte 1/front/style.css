@@ -1,7 +1,27 @@
 .btn-large {
-    font-size: 24px;
+    font-size: 1px;
     padding: 20px 40px;
     margin-bottom: 10px;
-    width: 100px;
+    width: 200px;
     height: 100px;
+    margin-top: 50px;
+
+}
+
+h1 {
+    font-size: 50px;
+    color: #2003fe;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    align-items: center;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
 }

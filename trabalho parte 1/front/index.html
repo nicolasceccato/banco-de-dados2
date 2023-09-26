@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página com Botões</title>
-    <!-- Inclua o CSS do Bootstrap -->
+    <title>Academia</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 </head>
+
 <body>
-<div class="container text-center">
-    <div class="row">
-        <div class="col-md-12">
-            <button class="btn btn-primary btn-lg btn-large">Alunos</button>
-            <button class="btn btn-primary btn-lg btn-large">Instrutores</button>
-            <button class="btn btn-primary btn-lg btn-large">Treinos</button>
-            <button class="btn btn-primary btn-lg btn-large">Planos</button>
-            <button class="btn btn-primary btn-lg btn-large">Pagamentos</button>
+    <h1>ACADEMIA</h1>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-12">
+                <button id="btnAlunos" class="btn btn-primary btn-lg btn-large"
+                    onclick="redirect('Alunos')">Alunos</button>
+                <button id="btnInstrutores" class="btn btn-primary btn-lg btn-large"
+                    onclick="redirect('Instrutores')">Instrutores</button>
+                <button id="btnTreinos" class="btn btn-primary btn-lg btn-large"
+                    onclick="redirect('Treinos')">Treinos</button>
+                <button id="btnPlanos" class="btn btn-primary btn-lg btn-large"
+                    onclick="redirect('Planos')">Planos</button>
+                <button id="btnPagamentos" class="btn btn-primary btn-lg btn-large"
+                    onclick="redirect('Pagamentos')">Pagamentos</button>
+                <button id="btnRelatorios" class="btn btn-primary btn-lg btn-large"
+                    onclick="redirect('Relatorios')">Relatórios</button>
+            </div>
         </div>
     </div>
-</div>
-<!-- Inclua o JavaScript do Bootstrap (opcional) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+
 </body>
+
 </html>
