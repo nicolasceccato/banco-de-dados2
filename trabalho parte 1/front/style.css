@@ -25,3 +25,15 @@ body {
     height: 100vh;
     margin: 0;
 }
+
+p {
+    font-size: 25px;
+}
+
+.aluno-input {
+    width: 500px;
+}
+
+.instrutor-input {
+    width: 500px;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academia</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <h1>RELATÓRIOS</h1>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <p>Relatório 1: Lista de alunos
+                        matriculados em um determinado plano</p>
+                    <button id="relatorio1" class="btn btn-primary btn-lg">1</button>
+                    <div id="formularioContainer"></div>
+                </div>
+                <div>
+                    <p>Relatório 2: Lista de instrutores com
+                        a respectiva quantidade de alunos</p>
+                    <button id="relatorio2" class="btn btn-primary btn-lg">2</button>
+                </div>
+                <div>
+                    <p>Relatório 3: Pagamentos por
+                        alunos</p>
+                    <button id="relatorio3" class="btn btn-primary btn-lg">3</button>
+                </div>
+                <br>
+                <br>
+                <div>
+                    <button id="btnVoltar" class="btn btn-primary btn-lg" onclick="redirect('index')">Voltar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <script src="relatorios.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</body>
+
+</html>
