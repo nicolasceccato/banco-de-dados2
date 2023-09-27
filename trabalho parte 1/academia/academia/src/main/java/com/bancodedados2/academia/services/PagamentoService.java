@@ -57,6 +57,7 @@ public class PagamentoService {
 
     private void updateData(Pagamento entity, Pagamento pagamento) {
         entity.setDataDoPagamento(pagamento.getDataDoPagamento());
+        entity.setValorDoPagamento(pagamento.getValorDoPagamento());
     }
 
     public List<Pagamento> obterPagamentosPorAluno(String cpf) {
