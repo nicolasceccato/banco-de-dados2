@@ -72,7 +72,7 @@ function instrutoresEAlunos() {
 }
 
 function criarFormularioInstrutores(instrutoresData) {
-    const formContainer = document.getElementById('formularioContainer');
+    const formContainer = document.getElementById('formularioContainer2');
 
     // Limpa o conteúdo anterior
     formContainer.innerHTML = '';
@@ -91,6 +91,54 @@ function criarFormularioInstrutores(instrutoresData) {
             <input type="text" id="instrutor${instrutor.matricula}" value="Instrutor ${instrutorIndex}: Matrícula: ${instrutor.matricula}, Quantidade de Alunos: ${numAlunos}" class="instrutor-input" disabled>
         `;
         form.appendChild(instrutorDiv);
+    });
+
+    // Adiciona o formulário ao contêiner
+    formContainer.appendChild(form);
+}
+
+function pagamentosPorAluno() {
+    const cpf = prompt('Digite o CPF do aluno:');
+    if (cpf !== null) {
+        buscarPagamentosPorAluno(cpf);
+    }
+}
+
+function buscarPagamentosPorAluno(cpf) {
+    axios.get(`${baseURL}/pagamentos/aluno/${cpf}`)
+        .then(response => {
+            const pagamentos = response.data;
+            if (pagamentos.length > 0) {
+                criarFormularioPagamentos(pagamentos);
+            } else {
+                alert('Nenhum pagamento encontrado para o aluno com o CPF informado.');
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao buscar pagamentos por aluno:', error);
+            alert('Ocorreu um erro ao buscar os pagamentos por aluno.');
+        });
+}
+
+function criarFormularioPagamentos(pagamentos) {
+    const formContainer = document.getElementById('formularioContainer3');
+
+    // Limpa o conteúdo anterior
+    formContainer.innerHTML = '';
+
+    // Cria um formulário
+    const form = document.createElement('form');
+    form.setAttribute('id', 'pagamentosForm');
+
+    // Itera sobre os pagamentos e cria os campos para cada um
+    pagamentos.forEach((pagamento, index) => {
+        const pagamentoDiv = document.createElement('div');
+        const pagamentoIndex = index + 1; // Índice do pagamento
+
+        pagamentoDiv.innerHTML = `
+            <input type="text" id="pagamento${pagamentoIndex}" value="Pagamento ${pagamentoIndex}: Valor: ${pagamento.valorDoPagamento}, Data: ${pagamento.dataDoPagamento}" class="pagamento-input" disabled>
+        `;
+        form.appendChild(pagamentoDiv);
     });
 
     // Adiciona o formulário ao contêiner
