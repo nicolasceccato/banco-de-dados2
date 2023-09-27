@@ -25,14 +25,20 @@ public class Pagamento {
     @JoinColumn(name = "id_plano")
     private Plano plano;
 
-    public Pagamento(){
+    public Pagamento() {
 
     }
+
     public Pagamento(Date dataDoPagamento, Double valorDoPagamento, Plano plano, Aluno aluno) {
         this.dataDoPagamento = dataDoPagamento;
         this.valorDoPagamento = valorDoPagamento;
         this.plano = plano;
         this.aluno = aluno;
+    }
+
+    public Pagamento(Date dataDoPagamento, Double valorDoPagamento) {
+        this.dataDoPagamento = dataDoPagamento;
+        this.valorDoPagamento = valorDoPagamento;
     }
 
     public Long getIdPagamento() {
